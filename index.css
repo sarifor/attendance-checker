@@ -8,16 +8,16 @@ body {
     width: 100%;
     height: 100vh;
     background-color: chartreuse;
-};
+}
 
 header {
     background-color: rgb(240, 176, 240);
     color: royalblue;
-};
+}
 
 main {
 
-};
+}
 
 .list__header {
     display: grid;
@@ -26,7 +26,7 @@ main {
 
     background-color: burlywood;
     color: seagreen;
-};
+}
 
 .list__attendance div {
     display: grid;
@@ -35,4 +35,4 @@ main {
 
     background-color: gold;
     color: brown;
-};
+}
