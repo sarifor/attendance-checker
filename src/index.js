@@ -61,7 +61,7 @@ function handleSubmit(e) { // Class 안에는 function을 넣을 수 없음
   
   let minutes = date.getMinutes();
   if (minutes < 10) {
-    minutes = parseInt("0" + String(minutes));
+    minutes = "0" + String(minutes);
   }
 
   const today = year + "/" + month + "/" + day;
@@ -70,6 +70,8 @@ function handleSubmit(e) { // Class 안에는 function을 넣을 수 없음
   let pass = "";
   let mail = "";
   let untilWhen = parseInt("0700"); // Javascript의 number vs. int ?
+
+  let checkinHistory = [];
 
   if (time < untilWhen) {
     pass = "Y"
@@ -83,7 +85,15 @@ function handleSubmit(e) { // Class 안에는 function을 넣을 수 없음
     mail = "Y"
   }
 
-  console.log(today, time, pass, mail);
+  const checkinHistoryEach = {
+    day: today,
+    when: time,
+    pass: pass,
+    mail: mail
+  };
+
+  checkinHistory.push(checkinHistoryEach);
+  console.log(checkinHistory);
 }
 
 class Button extends React.Component {
