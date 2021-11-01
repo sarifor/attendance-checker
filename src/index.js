@@ -13,6 +13,8 @@ Div
     Button
 */
 
+let checkinHistory = [];
+
 class ListAttendanceDailycheckin extends React.Component {
   render() {
     return (
@@ -70,8 +72,6 @@ function handleSubmit(e) { // Class 안에는 function을 넣을 수 없음
   let pass = "";
   let mail = "";
   let untilWhen = parseInt("0700"); // Javascript의 number vs. int ?
-
-  let checkinHistory = [];
 
   if (time < untilWhen) {
     pass = "Y"
