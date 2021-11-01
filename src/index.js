@@ -9,11 +9,11 @@ Div
     List
       ListHeader
       ListAttendance
-        ListAttendanceDailycheckin
+        (ListAttendanceDailycheckin)
     Button
 */
 
-class ListAttendanceDailycheckin extends React.Component {
+/* class ListAttendanceDailycheckin extends React.Component {
   render() {
     return (
       <div>
@@ -24,19 +24,23 @@ class ListAttendanceDailycheckin extends React.Component {
       </div>
     )
   }
-}
+} */
 
 class ListAttendance extends React.Component { // 클래스명: 대문자, Pascal Case
-  /* componentDidMount() {
-    console.log("ListAttendance에 온 this.props: ", this.props);
-  } */
-
   render() {
+    console.log("ListAttendance > render 안쪽의 this.props: ", this.props);
+    const { attendance } = this.props; // JSX에서는 attendance[0].day 식으로는 작동하지 않으나, map 함수로 풀어 사용하면 됨
+
     return ( // class가 아닌 className 사용, this.props or this.state 상황 구분!
       <div className="list__attendance">
-        <ListAttendanceDailycheckin />
-        <ListAttendanceDailycheckin />
-        <ListAttendanceDailycheckin />
+        {attendance.map(each => (
+          <div>
+            <span>{each.day}</span>
+            <span>{each.when}</span>
+            <span>{each.pass}</span>
+            <span>{each.mail}</span>                                    
+          </div>
+        ))}
       </div>
     )
   }
@@ -112,10 +116,11 @@ class ListHeader extends React.Component {
 
 class List extends React.Component {
   render() {
+    console.log("List > render 안쪽의 this.props: ", this.props);
     return (
       <div className="list">
         <ListHeader />
-        <ListAttendance />
+        <ListAttendance attendance={this.props.attendance} />
       </div>
     )
   }
@@ -142,37 +147,27 @@ class Nav extends React.Component {
 
 class Main extends React.Component {
   render() {
+    console.log("Main > render 안쪽의 this.props: ", this.props);
     return (
       <main>
-        <List />
+        <List attendance={this.props.attendance} />
       </main>
     )
   }
 };
-
-class TempTest extends React.Component {
-  render() {
-    console.log("TempTest 안의 this.props: ", this.props);
-    return (
-      <div>
-        <p>{this.props.attendance}</p>
-      </div>
-    )
-  }
-}
 
 class Div extends React.Component { // class Div () {} (X), props ?
   state = {
     attendance: []
   };
 
-  assign = () => {
+  assign = () => { // componentDidMount 뒤에 위치하여도 실행 가능하다. 이런 경우를 '호이스팅'이라 하던가?
     const jsonData = '{"location": "Starbucks", "attendance": [{"day" : "2021/11/1", "when" :  "0710", "pass" : "N", "mail" : "Y"}, {"day" : "2021/11/2", "when" :  "0700", "pass" : "Y", "mail" : "N"}, {"day" : "2021/11/3", "when" :  "0700", "pass" : "Y", "mail" : "N"}]}'; // '서버로부터 전송받은, 문자열로 전환된 객체' 가정
     const objData = JSON.parse(jsonData);
     const attendance = objData.attendance;
     console.log("assign 함수 안의 배열: ", attendance);
 
-    this.setState(attendance, () => console.log("setState 적용 후의 state: ", this.state));
+    this.setState({attendance}); // e4966bd에서 setState되지 않았던 이유: 중괄호 빼먹었던 게 원인
   };
 
   componentDidMount() {
@@ -186,8 +181,7 @@ class Div extends React.Component { // class Div () {} (X), props ?
       <div>
         <Header />
         <Nav />
-        <Main />
-        <TempTest attendance={this.state.attendance} />
+        <Main attendance={this.state.attendance} />
       </div>
     )
   }
