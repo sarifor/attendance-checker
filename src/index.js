@@ -13,47 +13,30 @@ Div
     Button
 */
 
-let checkinHistory = [];
-
 class ListAttendanceDailycheckin extends React.Component {
-  render() { // TypeError: Cannot read properties of undefined (reading 'day')
+  render() {
     return (
       <div>
-        <span>{this.props.attendanceEach.day}</span>
-        <span>{this.props.attendanceEach.when}</span>
-        <span>{this.props.attendanceEach.pass}</span>
-        <span>{this.props.attendanceEach.mail}</span>                
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>                
       </div>
     )
   }
 }
 
 class ListAttendance extends React.Component { // 클래스명: 대문자, Pascal Case
-  constructor(props) {
-    super(props);
-    this.state = {attendance: []};
-    console.log(this.state);
-  }
-
-  componentDidMount() {
-    this.assign();
-  }
-
-  componentWillUnmount() {
-  }
-
-  assign() {
-    this.setState({
-      attendance: checkinHistory
-    });
-  }
+  /* componentDidMount() {
+    console.log("ListAttendance에 온 this.props: ", this.props);
+  } */
 
   render() {
-    return ( // class가 아닌 className 사용
+    return ( // class가 아닌 className 사용, this.props or this.state 상황 구분!
       <div className="list__attendance">
-        <ListAttendanceDailycheckin attendanceEach={this.state.attendance[0]} />
-        <ListAttendanceDailycheckin attendanceEach={this.state.attendance[1]} />
-        <ListAttendanceDailycheckin attendanceEach={this.state.attendance[2]} />
+        <ListAttendanceDailycheckin />
+        <ListAttendanceDailycheckin />
+        <ListAttendanceDailycheckin />
       </div>
     )
   }
@@ -72,7 +55,7 @@ class ListHeader extends React.Component {
   }  
 }
 
-function handleSubmit(e) { // Class 안에는 function을 넣을 수 없음
+/* function handleSubmit(e) { // Class 안에는 function을 넣을 수 없음
   e.preventDefault();
   const date = new Date();
   const year = date.getFullYear();
@@ -113,9 +96,9 @@ function handleSubmit(e) { // Class 안에는 function을 넣을 수 없음
 
   checkinHistory.push(checkinHistoryEach);
   console.log(checkinHistory);
-}
+} */
 
-class Button extends React.Component {
+/* class Button extends React.Component {
   render() {
     return (
       <div className="button">
@@ -125,7 +108,7 @@ class Button extends React.Component {
       </div>      
     )
   }  
-}
+} */
 
 class List extends React.Component {
   render() {
@@ -162,19 +145,49 @@ class Main extends React.Component {
     return (
       <main>
         <List />
-        <Button />
       </main>
     )
   }
 };
 
-class Div extends React.Component { // class Div () {} (X), props ?
+class TempTest extends React.Component {
   render() {
+    console.log("TempTest 안의 this.props: ", this.props);
+    return (
+      <div>
+        <p>{this.props.attendance}</p>
+      </div>
+    )
+  }
+}
+
+class Div extends React.Component { // class Div () {} (X), props ?
+  state = {
+    attendance: []
+  };
+
+  assign = () => {
+    const jsonData = '{"location": "Starbucks", "attendance": [{"day" : "2021/11/1", "when" :  "0710", "pass" : "N", "mail" : "Y"}, {"day" : "2021/11/2", "when" :  "0700", "pass" : "Y", "mail" : "N"}, {"day" : "2021/11/3", "when" :  "0700", "pass" : "Y", "mail" : "N"}]}'; // '서버로부터 전송받은, 문자열로 전환된 객체' 가정
+    const objData = JSON.parse(jsonData);
+    const attendance = objData.attendance;
+    console.log("assign 함수 안의 배열: ", attendance);
+
+    this.setState(attendance, () => console.log("setState 적용 후의 state: ", this.state));
+  };
+
+  componentDidMount() {
+    this.assign();
+    console.log("componentDidMount 하고 난 뒤: ", this.state);
+  }
+
+  render() {
+    console.log("render 안");
     return (
       <div>
         <Header />
         <Nav />
         <Main />
+        <TempTest attendance={this.state.attendance} />
       </div>
     )
   }
