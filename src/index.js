@@ -16,7 +16,7 @@ Div
 let checkinHistory = [];
 
 class ListAttendanceDailycheckin extends React.Component {
-  render() {
+  render() { // TypeError: Cannot read properties of undefined (reading 'day')
     return (
       <div>
         <span>{this.props.attendanceEach.day}</span>
@@ -29,12 +29,31 @@ class ListAttendanceDailycheckin extends React.Component {
 }
 
 class ListAttendance extends React.Component { // 클래스명: 대문자, Pascal Case
+  constructor(props) {
+    super(props);
+    this.state = {attendance: []};
+    console.log(this.state);
+  }
+
+  componentDidMount() {
+    this.assign();
+  }
+
+  componentWillUnmount() {
+  }
+
+  assign() {
+    this.setState({
+      attendance: checkinHistory
+    });
+  }
+
   render() {
     return ( // class가 아닌 className 사용
       <div className="list__attendance">
-        <ListAttendanceDailycheckin attendanceEach={this.props.attendance[0]} />
-        <ListAttendanceDailycheckin attendanceEach={this.props.attendance[1]} />        
-        <ListAttendanceDailycheckin attendanceEach={this.props.attendance[2]} />
+        <ListAttendanceDailycheckin attendanceEach={this.state.attendance[0]} />
+        <ListAttendanceDailycheckin attendanceEach={this.state.attendance[1]} />
+        <ListAttendanceDailycheckin attendanceEach={this.state.attendance[2]} />
       </div>
     )
   }
@@ -113,7 +132,7 @@ class List extends React.Component {
     return (
       <div className="list">
         <ListHeader />
-        <ListAttendance attendance={this.props.attendance} />
+        <ListAttendance />
       </div>
     )
   }
@@ -142,7 +161,7 @@ class Main extends React.Component {
   render() {
     return (
       <main>
-        <List attendance={this.props.attendance} />
+        <List />
         <Button />
       </main>
     )
@@ -155,17 +174,13 @@ class Div extends React.Component { // class Div () {} (X), props ?
       <div>
         <Header />
         <Nav />
-        <Main attendance={this.props.attendance} />
+        <Main />
       </div>
     )
   }
 }
 
-const jsonData = '{"location": "Starbucks", "attendance": [{"day" : "2021/11/1", "when" :  "0710", "pass" : "N", "mail" : "Y"}, {"day" : "2021/11/2", "when" :  "0700", "pass" : "Y", "mail" : "N"}, {"day" : "2021/11/3", "when" :  "0700", "pass" : "Y", "mail" : "N"}]}'; // '서버로부터 전송받은, 문자열로 전환된 객체' 가정
-const objData = JSON.parse(jsonData);
-const attendance = objData.attendance;
-
 ReactDOM.render( // 여러 컴포넌트를 root element에 올릴 수 있나?  ->  작동 안 하는 걸 보니, 못 올리나봐
-  <Div attendance={attendance} />,
+  <Div />,
   document.getElementById("root")
 );
