@@ -51,11 +51,48 @@ class ListHeader extends React.Component {
   }  
 }
 
+function handleSubmit(e) { // Class 안에는 function을 넣을 수 없음
+  e.preventDefault();
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDay();
+  const hour = date.getHours();
+  
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = parseInt("0" + String(minutes));
+  }
+
+  const today = year + "/" + month + "/" + day;
+  const time = parseInt(hour + "" + minutes);
+
+  let pass = "";
+  let mail = "";
+  let untilWhen = parseInt("0700"); // Javascript의 number vs. int ?
+
+  if (time < untilWhen) {
+    pass = "Y"
+  } else {
+    pass = "N"
+  }
+
+  if (pass === "Y") { // pass = "Y" (X)
+    mail = "N"
+  } else {
+    mail = "Y"
+  }
+
+  console.log(today, time, pass, mail);
+}
+
 class Button extends React.Component {
   render() {
     return (
       <div className="button">
-        <button>Check In</button>
+        <form onSubmit={handleSubmit}>
+          <button type="submit">Check In</button>
+        </form>
       </div>      
     )
   }  
