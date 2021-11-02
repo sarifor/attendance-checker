@@ -13,8 +13,6 @@ Div
     Button
 */
 
-let checkinHistory = [];
-
 /* class ListAttendanceDailycheckin extends React.Component {
   render() { // TypeError: Cannot read properties of undefined (reading 'day')
     return (
@@ -62,8 +60,7 @@ class ListHeader extends React.Component {
   }  
 }
 
-/* function handleSubmit(e) { // Class 안에는 function을 넣을 수 없음
-  e.preventDefault();
+function handleSubmit() { // Class 안에는 function을 넣을 수 없음
   const date = new Date();
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -101,13 +98,18 @@ class ListHeader extends React.Component {
     mail: mail
   };
 
-  checkinHistory.push(checkinHistoryEach);
-  console.log(checkinHistory);
-} */  
+  return checkinHistoryEach; // return 심화학습 하기!
+}
 
 class Button extends React.Component {
-  handleLowToHigh = () => {
-    this.props.lowToHigh("Button으로부터 온 값");
+  handleLowToHigh = (e) => {
+    e.preventDefault(); // 매우 중요! 이거 안 쓰면 콘솔 로그 찍어봐도 변수 값이 다 비어 보임!!!
+
+    const checkinHistoryEach = handleSubmit();
+    const checkinHistory = {...checkinHistoryEach}
+    const convertedCheckinHistory = JSON.stringify(checkinHistory); // Object는 사용할 수 없다: Uncaught Error: Objects are not valid as a React child (found: object with keys {day, when, pass, mail}). If you meant to render a collection of children, use an array instead.
+
+    this.props.lowToHigh(convertedCheckinHistory);
   }
 
   render() {
