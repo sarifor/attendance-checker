@@ -9,31 +9,23 @@ Div
     List
       ListHeader
       ListAttendance
-        ListAttendanceDailycheckin
+        (ListAttendanceDailycheckin)
     Button
 */
 
 let checkinHistory = [];
 
-class ListAttendanceDailycheckin extends React.Component {
+/* class ListAttendanceDailycheckin extends React.Component {
   render() { // TypeError: Cannot read properties of undefined (reading 'day')
     return (
       <div>
-        <span>{this.props.attendanceEach.day}</span>
-        <span>{this.props.attendanceEach.when}</span>
-        <span>{this.props.attendanceEach.pass}</span>
-        <span>{this.props.attendanceEach.mail}</span>                
       </div>
     )
   }
-}
+} */
 
 class ListAttendance extends React.Component { // 클래스명: 대문자, Pascal Case
-  constructor(props) {
-    super(props);
-    this.state = {attendance: []};
-    console.log(this.state);
-  }
+  /* state = { attendance: [] };
 
   componentDidMount() {
     this.assign();
@@ -46,14 +38,12 @@ class ListAttendance extends React.Component { // 클래스명: 대문자, Pasca
     this.setState({
       attendance: checkinHistory
     });
-  }
+  } */
 
   render() {
+    // console.log("ListAttendance > render > this.state: ", this.state);
     return ( // class가 아닌 className 사용
       <div className="list__attendance">
-        <ListAttendanceDailycheckin attendanceEach={this.state.attendance[0]} />
-        <ListAttendanceDailycheckin attendanceEach={this.state.attendance[1]} />
-        <ListAttendanceDailycheckin attendanceEach={this.state.attendance[2]} />
       </div>
     )
   }
@@ -117,6 +107,9 @@ function handleSubmit(e) { // Class 안에는 function을 넣을 수 없음
 
 class Button extends React.Component {
   render() {
+    this.props.lowToHigh("Button으로부터 온 값");
+    // console.log(this.props.lowToHigh());
+
     return (
       <div className="button">
         <form onSubmit={handleSubmit}>
@@ -157,12 +150,26 @@ class Nav extends React.Component {
   }
 };
 
-class Main extends React.Component {
+class Main extends React.Component {  
+  state = { text: "" };
+
+  lowToHigh = (text) => { // setState 브랜치의 assign 함수도 그렇고, 왜 앞에 const를 붙이면 안 되지?
+    const receivedText = text;
+    this.setState({ text: receivedText });
+    console.log("Main > lowToHigh > tihs.state: ", this.state);
+  };
+
+  componentDidMount() {
+    this.lowToHigh();
+    console.log("Main > componentDidMount > tihs.state: ", this.state);
+  }
+
   render() {
+    console.log("Main > render > this.state: ", this.state);
     return (
       <main>
         <List />
-        <Button />
+        <Button lowToHigh={this.lowToHigh} />
       </main>
     )
   }
