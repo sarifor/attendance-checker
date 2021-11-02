@@ -62,7 +62,7 @@ class ListHeader extends React.Component {
   }  
 }
 
-function handleSubmit(e) { // Class 안에는 function을 넣을 수 없음
+/* function handleSubmit(e) { // Class 안에는 function을 넣을 수 없음
   e.preventDefault();
   const date = new Date();
   const year = date.getFullYear();
@@ -103,16 +103,19 @@ function handleSubmit(e) { // Class 안에는 function을 넣을 수 없음
 
   checkinHistory.push(checkinHistoryEach);
   console.log(checkinHistory);
-}
+} */  
 
 class Button extends React.Component {
-  render() {
+  handleLowToHigh = () => {
     this.props.lowToHigh("Button으로부터 온 값");
+  }
+
+  render() {
     // console.log(this.props.lowToHigh());
 
     return (
       <div className="button">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={this.handleLowToHigh}>
           <button type="submit">Check In</button>
         </form>
       </div>      
