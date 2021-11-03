@@ -39,9 +39,17 @@ class ListAttendance extends React.Component { // 클래스명: 대문자, Pasca
   } */
 
   render() {
-    // console.log("ListAttendance > render > this.state: ", this.state);
+    console.log("ListAttendance > render > this.state: ", this.props);
     return ( // class가 아닌 className 사용
       <div className="list__attendance">
+        { this.props.attendance.map(each => (
+          <div>
+            <span>{each.day}</span>
+            <span>{each.when}</span>
+            <span>{each.pass}</span>
+            <span>{each.mail}</span>                                    
+          </div>
+        ))}
       </div>
     )
   }
@@ -127,7 +135,7 @@ class List extends React.Component {
     return (
       <div className="list">
         <ListHeader />
-        <ListAttendance />
+        <ListAttendance attendance={this.props.attendance} />
       </div>
     )
   }
@@ -157,9 +165,11 @@ class Main extends React.Component {
 
   lowToHigh = (text) => { // setState 브랜치의 assign 함수도 그렇고, 왜 앞에 const를 붙이면 안 되지?
     const receivedText = text;
-    this.setState(() => {
-      return { text: this.state.text.concat(receivedText) }
-    });
+    if (receivedText) {
+      this.setState(() => {
+        return { text: this.state.text.concat(receivedText) }
+      });
+    }
     console.log("Main > lowToHigh > tihs.state: ", this.state);
   };
 
@@ -172,7 +182,7 @@ class Main extends React.Component {
     console.log("Main > render > this.state: ", this.state);
     return (
       <main>
-        <List />
+        <List attendance={this.state.text} />
         <Button lowToHigh={this.lowToHigh} />
       </main>
     )
