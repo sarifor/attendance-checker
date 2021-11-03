@@ -106,10 +106,7 @@ class Button extends React.Component {
     e.preventDefault(); // 매우 중요! 이거 안 쓰면 콘솔 로그 찍어봐도 변수 값이 다 비어 보임!!!
 
     const checkinHistoryEach = handleSubmit();
-    const checkinHistory = {...checkinHistoryEach}
-    const convertedCheckinHistory = JSON.stringify(checkinHistory); // Object는 사용할 수 없다: Uncaught Error: Objects are not valid as a React child (found: object with keys {day, when, pass, mail}). If you meant to render a collection of children, use an array instead.
-
-    this.props.lowToHigh(convertedCheckinHistory);
+    this.props.lowToHigh(checkinHistoryEach);
   }
 
   render() {
@@ -156,11 +153,13 @@ class Nav extends React.Component {
 };
 
 class Main extends React.Component {  
-  state = { text: "" };
+  state = { text: [] };
 
   lowToHigh = (text) => { // setState 브랜치의 assign 함수도 그렇고, 왜 앞에 const를 붙이면 안 되지?
     const receivedText = text;
-    this.setState({ text: receivedText });
+    this.setState(() => {
+      return { text: this.state.text.concat(receivedText) }
+    });
     console.log("Main > lowToHigh > tihs.state: ", this.state);
   };
 
