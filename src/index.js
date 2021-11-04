@@ -42,8 +42,8 @@ class ListAttendance extends React.Component { // 클래스명: 대문자, Pasca
     console.log("ListAttendance > render > this.state: ", this.props);
     return ( // class가 아닌 className 사용
       <div className="list__attendance">
-        { this.props.attendance.map((each, index) => (
-          <div key={index}>
+        { this.props.attendance.map(each => (
+          <div key={each.id}>
             <span>{each.day}</span>
             <span>{each.when}</span>
             <span>{each.pass}</span>
@@ -167,7 +167,12 @@ class Main extends React.Component {
     const receivedText = text;
     if (receivedText) {
       this.setState(() => {
-        return { text: this.state.text.concat(receivedText) }
+        return { text: this.state.text.concat(receivedText)
+          .map((each, index) => {
+            each['id'] = index;
+            return each;
+          })
+        };
       });
     }
     console.log("Main > lowToHigh > tihs.state: ", this.state);
