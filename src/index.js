@@ -42,8 +42,8 @@ class ListAttendance extends React.Component { // 클래스명: 대문자, Pasca
     console.log("ListAttendance > render > this.state: ", this.props);
     return ( // class가 아닌 className 사용
       <div className="list__attendance">
-        { this.props.attendance.map(each => (
-          <div>
+        { this.props.attendance.map((each, index) => (
+          <div key={index}>
             <span>{each.day}</span>
             <span>{each.when}</span>
             <span>{each.pass}</span>
