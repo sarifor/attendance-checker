@@ -160,6 +160,30 @@ class Nav extends React.Component {
   }
 };
 
+function getCurrentLocation () {
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    // maximumAge: 0
+  };
+
+  function success(position) {
+    const latitude  = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    const href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
+    console.log(href);
+  };
+
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      success, 
+      () => console.log("Error"),
+      options
+    )
+  };
+};
+
 class Main extends React.Component {  
   state = { text: [] };
 
@@ -181,6 +205,7 @@ class Main extends React.Component {
   componentDidMount() {
     this.lowToHigh();
     console.log("Main > componentDidMount > tihs.state: ", this.state);
+    getCurrentLocation();
   }
 
   render() {
