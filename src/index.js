@@ -131,6 +131,22 @@ class Button extends React.Component {
   }  
 }
 
+class AutoButton extends Button {
+  componentDidMount() {
+    const checkinHistoryEach = handleSubmit();
+    console.log(checkinHistoryEach);
+    this.props.lowToHigh(checkinHistoryEach);
+  }
+
+  render() {
+    return (
+      <div>
+        <span>From iPhone</span>
+      </div>
+    )
+  }   
+};
+
 class List extends React.Component {
   render() {
     return (
@@ -230,8 +246,12 @@ class Main extends React.Component {
     console.log("Main > render > this.state: ", this.state);
     return (
       <main>
-          <List attendance={this.state.text} />
-          <Button lowToHigh={this.lowToHigh} />
+        <List attendance={this.state.text} />
+        {this.props.arrived ? (
+          <AutoButton lowToHigh={this.lowToHigh} />          
+        ) : (
+          <Button lowToHigh={this.lowToHigh} />          
+        )}        
       </main>
     )
   }
@@ -240,17 +260,18 @@ class Main extends React.Component {
 class Div extends React.Component { // class Div () {} (X), props ?
   render() {
     return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/test" element={<Test />} />
-        </Routes>   
+        <BrowserRouter>
+          <Routes>
+            <Route path="/test" element={<Main arrived="true" />} />
+            <Route path="/" element={<Main />} />
+          </Routes>
 
           {/*<div>
               <Header />
               <Nav />
               <Main />
-          </div>*/}
-      </BrowserRouter>      
+          </div>*/}          
+        </BrowserRouter>
     )
   }
 }
