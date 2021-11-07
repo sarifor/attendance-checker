@@ -162,7 +162,7 @@ class Header extends React.Component {
   render() {
     return (
       <header>
-        <h2>Starbucks Attendance Checker</h2>      
+        <h2>Starbucks Attendance Checker(Test)</h2>
       </header>
     )
   }
