@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 /* 
 Div
@@ -184,6 +185,23 @@ function getCurrentLocation () {
   };
 };
 
+class Test extends React.Component {
+  /* executeConsoleLog = () => console.log("Test!");
+
+  componentDidMount() {
+    this.executeConsoleLog();
+  }; */
+
+  render() {
+    return (
+      <div>
+        <p>Test!!</p>
+      </div>
+    )
+  }
+
+};
+
 class Main extends React.Component {  
   state = { text: [] };
 
@@ -212,8 +230,8 @@ class Main extends React.Component {
     console.log("Main > render > this.state: ", this.state);
     return (
       <main>
-        <List attendance={this.state.text} />
-        <Button lowToHigh={this.lowToHigh} />
+          <List attendance={this.state.text} />
+          <Button lowToHigh={this.lowToHigh} />
       </main>
     )
   }
@@ -222,11 +240,17 @@ class Main extends React.Component {
 class Div extends React.Component { // class Div () {} (X), props ?
   render() {
     return (
-      <div>
-        <Header />
-        <Nav />
-        <Main />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/test" component={Test} />
+        </Routes>   
+
+          {/*<div>
+              <Header />
+              <Nav />
+              <Main />
+          </div>*/}
+      </BrowserRouter>      
     )
   }
 }
