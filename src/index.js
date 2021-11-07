@@ -261,14 +261,13 @@ class Div extends React.Component { // class Div () {} (X), props ?
   render() {
     return (
       <div>
-        <Header />
-        <Nav />      
+        {/*<Header />
+        <Nav />*/}
         <BrowserRouter>
           <Routes>
             <Route path="/test" element={<Main arrived="true" />} />
             <Route path="/" element={<Main />} />
           </Routes>
-
           {/*<div>
               <Header />
               <Nav />
