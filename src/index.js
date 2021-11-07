@@ -260,6 +260,9 @@ class Main extends React.Component {
 class Div extends React.Component { // class Div () {} (X), props ?
   render() {
     return (
+      <div>
+        <Header />
+        <Nav />      
         <BrowserRouter>
           <Routes>
             <Route path="/test" element={<Main arrived="true" />} />
@@ -272,6 +275,7 @@ class Div extends React.Component { // class Div () {} (X), props ?
               <Main />
           </div>*/}          
         </BrowserRouter>
+      </div>
     )
   }
 }
