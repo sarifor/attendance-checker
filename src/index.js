@@ -242,7 +242,7 @@ class Div extends React.Component { // class Div () {} (X), props ?
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/test" component={Test} />
+          <Route path="/test" element={<Test />} />
         </Routes>   
 
           {/*<div>
