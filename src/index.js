@@ -4,13 +4,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function Div() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route path="/test">
           <div>Test</div>
         </Route>          
         <Route path="/">
-          <div>root 3</div>
+          <div>root 4</div>
         </Route> 
       </Switch>
     </Router>
