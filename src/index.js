@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 
 class Test1 extends React.Component {
@@ -29,15 +29,13 @@ class Test2 extends React.Component {
 
 class Div extends React.Component { // class Div () {} (X), props ? 
   componentDidMount() {
-    console.log("Div Component Mounted! 211110_2");
+    console.log("Div Component Mounted! 211110_3");
   }
   render() {
     return (
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Test1 />} />
-          <Route path="/test2" element={<Test2 />} />
-        </Routes>
+        <Route path="/" element={<Test1 />} />
+        <Route path="/test2" element={<Test2 />} />
       </BrowserRouter>
     )
   }
