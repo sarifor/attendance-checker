@@ -4,6 +4,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 class Test1 extends React.Component {
+  componentDidMount() {
+    console.log("Test1 211110");
+  }
+
   render() {
     return (
       <div>Test1!</div>
@@ -12,6 +16,10 @@ class Test1 extends React.Component {
 }
 
 class Test2 extends React.Component {
+  componentDidMount() {
+    console.log("Test2 211110");
+  }
+
   render() {
     return (
       <div>Test2!</div>
@@ -21,7 +29,7 @@ class Test2 extends React.Component {
 
 class Div extends React.Component { // class Div () {} (X), props ? 
   componentDidMount() {
-    console.log("Div Component Mounted! 211110");
+    console.log("Div Component Mounted! 211110_2");
   }
   render() {
     return (
