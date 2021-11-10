@@ -1,41 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from "react-router-dom";
-
-
-class Test1 extends React.Component {
-  componentDidMount() {
-    console.log("Test1 211110");
-  }
-
-  render() {
-    return (
-      <div>Test1!</div>
-    )
-  }
-}
-
-class Test2 extends React.Component {
-  componentDidMount() {
-    console.log("Test2 211110");
-  }
-
-  render() {
-    return (
-      <div>Test2!</div>
-    )
-  }
-}
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 class Div extends React.Component { // class Div () {} (X), props ? 
   componentDidMount() {
-    console.log("Div Component Mounted! 211110_5");
+    console.log("Div Component Mounted! 211110_6");
   }
   render() {
     return (
       <BrowserRouter>
-        <Route path="/" component={Test1} />
-        <Route path="/test2" component={Test2} />
+        <Switch>
+          <Route path="/">
+            <div>Test1</div>
+          </Route>
+          <Route path="/test2">
+            <div>Test2</div>
+          </Route>          
+        </Switch>
       </BrowserRouter>
     )
   }
