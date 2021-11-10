@@ -10,7 +10,7 @@ function Div() {
           <div>Test</div>
         </Route>          
         <Route path="/">
-          <div>root 1</div>
+          <div>root 2</div>
         </Route> 
       </Switch>
     </Router>
@@ -18,6 +18,8 @@ function Div() {
 }
 
 ReactDOM.render( // 여러 컴포넌트를 root element에 올릴 수 있나?  ->  작동 안 하는 걸 보니, 못 올리나봐
-  <Div />,
+  <React.StrictMode>
+    <Div />
+  </React.StrictMode>,
   document.getElementById("root")
 );
