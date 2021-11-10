@@ -21,7 +21,7 @@ class Test2 extends React.Component {
 
 class Div extends React.Component { // class Div () {} (X), props ? 
   componentDidMount() {
-    console.log("Div Component Mounted!");
+    console.log("Div Component Mounted! 211110");
   }
   render() {
     return (
