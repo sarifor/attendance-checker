@@ -2,6 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
+class Test1 extends React.Component {
+  render() {
+    return (
+      <div>Test1!!!</div>
+    )
+  }
+}
+
+class Test2 extends React.Component {
+  render() {
+    return (
+      <div>Test2!!!</div>
+    )
+  }
+}
+
 class Div extends React.Component { // class Div () {} (X), props ? 
   componentDidMount() {
     console.log("Div Component Mounted!");
@@ -9,12 +26,8 @@ class Div extends React.Component { // class Div () {} (X), props ?
   render() {
     return (
       <Routes>
-        <Route path="/">
-          <div>route!!</div>
-        </Route>
-        <Route path="/test">
-          <div>Test!!</div>
-        </Route>
+        <Route path="/" element={<Test1 />} />
+        <Route path="/test2" element={<Test2 />} />
       </Routes>
     )
   }
