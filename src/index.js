@@ -263,7 +263,7 @@ class Div extends React.Component { // class Div () {} (X), props ?
   }
   render() {
     return (
-        {/*<BrowserRouter>
+        <BrowserRouter>
           <Route path="/">
             <div>route!</div>
           </Route>
@@ -271,7 +271,6 @@ class Div extends React.Component { // class Div () {} (X), props ?
             <div>Test!</div>
           </Route>
         </BrowserRouter>
-        */}
     )
   }
 }
