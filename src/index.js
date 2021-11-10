@@ -4,16 +4,16 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 class Div extends React.Component { // class Div () {} (X), props ? 
   componentDidMount() {
-    console.log("Div Component Mounted! 211110_9");
+    console.log("Div Component Mounted! 211110_10");
   }
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
               <div>Test1</div>
           </Route>
-          <Route path="/test">
+          <Route exact path="/test">
             <div>Test2</div>
           </Route>    
         </Switch>
