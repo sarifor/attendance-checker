@@ -29,13 +29,13 @@ class Test2 extends React.Component {
 
 class Div extends React.Component { // class Div () {} (X), props ? 
   componentDidMount() {
-    console.log("Div Component Mounted! 211110_4");
+    console.log("Div Component Mounted! 211110_5");
   }
   render() {
     return (
       <BrowserRouter>
-        <Route path="/" element={Test1} />
-        <Route path="/test2" element={Test2} />
+        <Route path="/" component={Test1} />
+        <Route path="/test2" component={Test2} />
       </BrowserRouter>
     )
   }
