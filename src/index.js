@@ -4,13 +4,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class Div extends React.Component { // class Div () {} (X), props ? 
   componentDidMount() {
-    console.log("Div Component Mounted! 211110_13");
+    console.log("Div Component Mounted! 211110_14");
   }
   render() {
     return (
       <Router>
         <Switch>
-          <Route path="/test">
+          <Route path="test">
             <div>Test2</div>
           </Route>          
           <Route path="/">
