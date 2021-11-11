@@ -20,7 +20,7 @@ class Root extends React.Component {
 
 class Div extends React.Component {
   componentDidMount() {
-    console.log("Test 2");
+    console.log("Test 3");
   };
 
   render () {
@@ -29,9 +29,11 @@ class Div extends React.Component {
         <Switch>
           {/*<Route path="/test" component={Test} />*/}
           <Route path="/test">
-            <div>Test!</div>
+            <Test />
           </Route>
-          <Route path="/" component={Root} />
+          <Route path="/">
+            <Root />
+          </Route>
         </Switch>
       </Router>
     )
