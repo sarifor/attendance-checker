@@ -10,7 +10,7 @@ function Div() {
           <div>Test</div>
         </Route>          
         <Route path="/">
-          <div>root 5</div>
+          <div>root 6</div>
         </Route> 
       </Switch>
     </Router>
