@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/attendance_checker/static/js/main.8e5a95d6.chunk.js",
-    "main.js.map": "/attendance_checker/static/js/main.8e5a95d6.chunk.js.map",
+    "main.js": "/attendance_checker/static/js/main.3bb0a572.chunk.js",
+    "main.js.map": "/attendance_checker/static/js/main.3bb0a572.chunk.js.map",
     "runtime-main.js": "/attendance_checker/static/js/runtime-main.b083c364.js",
     "runtime-main.js.map": "/attendance_checker/static/js/runtime-main.b083c364.js.map",
-    "static/js/2.be93db28.chunk.js": "/attendance_checker/static/js/2.be93db28.chunk.js",
-    "static/js/2.be93db28.chunk.js.map": "/attendance_checker/static/js/2.be93db28.chunk.js.map",
+    "static/js/2.67d2bd41.chunk.js": "/attendance_checker/static/js/2.67d2bd41.chunk.js",
+    "static/js/2.67d2bd41.chunk.js.map": "/attendance_checker/static/js/2.67d2bd41.chunk.js.map",
     "index.html": "/attendance_checker/index.html",
-    "static/js/2.be93db28.chunk.js.LICENSE.txt": "/attendance_checker/static/js/2.be93db28.chunk.js.LICENSE.txt"
+    "static/js/2.67d2bd41.chunk.js.LICENSE.txt": "/attendance_checker/static/js/2.67d2bd41.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b083c364.js",
-    "static/js/2.be93db28.chunk.js",
-    "static/js/main.8e5a95d6.chunk.js"
+    "static/js/2.67d2bd41.chunk.js",
+    "static/js/main.3bb0a572.chunk.js"
   ]
 }
