@@ -6,11 +6,11 @@ function Div() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
-        <Route path="https://sarigenaku.github.io/attendance_checker/test">
+        <Route path="/test">
           <div>Test</div>
         </Route>          
         <Route path="/">
-          <div>root 6</div>
+          <div>root 7</div>
         </Route> 
       </Switch>
     </Router>
