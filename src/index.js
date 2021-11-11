@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Root from "./routes/Root";
+import Test from "./routes/Test";
 
+/*
 class Test extends React.Component {
   render () {
     return (
@@ -16,11 +19,11 @@ class Root extends React.Component {
       <div>Root!</div>
     )
   };
-};
+};*/
 
 class Div extends React.Component {
   componentDidMount() {
-    console.log("Test 3");
+    console.log("Test 4");
   };
 
   render () {
