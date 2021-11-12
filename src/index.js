@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Root from "./routes/Root";
 import Test from "./routes/Test";
 
@@ -23,15 +23,15 @@ class Root extends React.Component {
 
 class Div extends React.Component {
   componentDidMount() {
-    console.log("Test 8");
+    console.log("Test 9");
   };
 
   render () {
     return (
       <Router>
         <Switch>
-          <Route path="https://sarigenaku.github.io/attendance_checker/test" component={Test} />
-          <Route path="https://sarigenaku.github.io/attendance_checker/" component={Root} />
+          <Route path="/test" component={Test} />
+          <Route path="/" component={Root} />
         </Switch>
       </Router>
     )
