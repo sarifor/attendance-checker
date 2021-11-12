@@ -23,7 +23,7 @@ class Root extends React.Component {
 
 class Div extends React.Component {
   componentDidMount() {
-    console.log("Test 9");
+    console.log("Test 10");
   };
 
   render () {
