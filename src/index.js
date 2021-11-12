@@ -23,15 +23,15 @@ class Root extends React.Component {
 
 class Div extends React.Component {
   componentDidMount() {
-    console.log("Test 7");
+    console.log("Test 8");
   };
 
   render () {
     return (
       <Router>
         <Switch>
-          <Route path="/test" component={Test} />
-          <Route path="/" component={Root} />
+          <Route path="https://sarigenaku.github.io/attendance_checker/test" component={Test} />
+          <Route path="https://sarigenaku.github.io/attendance_checker/" component={Root} />
         </Switch>
       </Router>
     )
