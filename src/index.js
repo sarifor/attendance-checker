@@ -4,8 +4,8 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 /* 
 Div
-  Header
-  Nav
+  (Header)
+  (Nav)
   Main
     List
       ListHeader
@@ -14,28 +14,7 @@ Div
     Button
 */
 
-/* class ListAttendanceDailycheckin extends React.Component {
-  render() { // TypeError: Cannot read properties of undefined (reading 'day')
-    return (
-      <div>
-      </div>
-    )
-  }
-} */
-
 class ListAttendance extends React.Component { // 클래스명: 대문자, Pascal Case
-  /* state = { attendance: [] };
-  componentDidMount() {
-    this.assign();
-  }
-  componentWillUnmount() {
-  }
-  assign() {
-    this.setState({
-      attendance: checkinHistory
-    });
-  } */
-
   render() {
     console.log("ListAttendance > render > this.state: ", this.props);
     return ( // class가 아닌 className 사용
@@ -104,7 +83,7 @@ function handleSubmit() { // Class 안에는 function을 넣을 수 없음
     mail: mail
   };
 
-  return checkinHistoryEach; // return 심화학습 하기!
+  return checkinHistoryEach;
 }
 
 class Button extends React.Component {
@@ -116,8 +95,6 @@ class Button extends React.Component {
   }
 
   render() {
-    // console.log(this.props.lowToHigh());
-
     return (
       <div className="button">
         <form onSubmit={this.handleLowToHigh}>
@@ -155,7 +132,7 @@ class List extends React.Component {
   }
 }
 
-class Header extends React.Component {
+/* class Header extends React.Component {
   render() {
     return (
       <header>
@@ -163,16 +140,16 @@ class Header extends React.Component {
       </header>
     )
   }
-};
+}; */
 
-class Nav extends React.Component {
+/* class Nav extends React.Component {
   render() {
     return (
       <nav>
       </nav>
     )
   }
-};
+}; */
 
 function getCurrentLocation () {
   var options = {
@@ -196,22 +173,6 @@ function getCurrentLocation () {
       options
     )
   };
-};
-
-class Test extends React.Component {
-  /* executeConsoleLog = () => console.log("Test!");
-  componentDidMount() {
-    this.executeConsoleLog();
-  }; */
-
-  render() {
-    return (
-      <div>
-        <p>Test!!</p>
-      </div>
-    )
-  }
-
 };
 
 class Main extends React.Component {  
@@ -253,11 +214,7 @@ class Main extends React.Component {
   }
 };
 
-class Div extends React.Component { // class Div () {} (X), props ?
-  componentWillMount() {
-    console.log("Test 1");
-  }
-  
+class Div extends React.Component {
   render() {
     return (
         <Router>
