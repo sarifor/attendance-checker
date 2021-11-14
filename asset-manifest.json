@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/attendance_checker/static/js/main.f3082a48.chunk.js",
-    "main.js.map": "/attendance_checker/static/js/main.f3082a48.chunk.js.map",
+    "main.js": "/attendance_checker/static/js/main.682a7c2a.chunk.js",
+    "main.js.map": "/attendance_checker/static/js/main.682a7c2a.chunk.js.map",
     "runtime-main.js": "/attendance_checker/static/js/runtime-main.b083c364.js",
     "runtime-main.js.map": "/attendance_checker/static/js/runtime-main.b083c364.js.map",
     "static/js/2.63b8754a.chunk.js": "/attendance_checker/static/js/2.63b8754a.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.b083c364.js",
     "static/js/2.63b8754a.chunk.js",
-    "static/js/main.f3082a48.chunk.js"
+    "static/js/main.682a7c2a.chunk.js"
   ]
 }
