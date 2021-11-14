@@ -14,10 +14,10 @@ Div
     Button
 */
 
-class ListAttendance extends React.Component { // 클래스명: 대문자, Pascal Case
+class ListAttendance extends React.Component {
   render() {
     console.log("ListAttendance > render > this.state: ", this.props);
-    return ( // class가 아닌 className 사용
+    return (
       <div className="list__attendance">
         { this.props.attendance.map(each => (
           <div key={each.id}>
@@ -45,7 +45,7 @@ class ListHeader extends React.Component {
   }  
 }
 
-function handleSubmit() { // Class 안에는 function을 넣을 수 없음
+function handleSubmit() {
   const date = new Date();
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -62,7 +62,7 @@ function handleSubmit() { // Class 안에는 function을 넣을 수 없음
 
   let pass = "";
   let mail = "";
-  let untilWhen = parseInt("0700"); // Javascript의 number vs. int ?
+  let untilWhen = parseInt("0700");
 
   if (time < untilWhen) {
     pass = "Y"
@@ -70,7 +70,7 @@ function handleSubmit() { // Class 안에는 function을 넣을 수 없음
     pass = "N"
   }
 
-  if (pass === "Y") { // pass = "Y" (X)
+  if (pass === "Y") {
     mail = "N"
   } else {
     mail = "Y"
@@ -88,7 +88,7 @@ function handleSubmit() { // Class 안에는 function을 넣을 수 없음
 
 class Button extends React.Component {
   handleLowToHigh = (e) => {
-    e.preventDefault(); // 매우 중요! 이거 안 쓰면 콘솔 로그 찍어봐도 변수 값이 다 비어 보임!!!
+    e.preventDefault();
 
     const checkinHistoryEach = handleSubmit();
     this.props.lowToHigh(checkinHistoryEach);
@@ -151,7 +151,7 @@ class List extends React.Component {
   }
 }; */
 
-function getCurrentLocation () {
+/* function getCurrentLocation () {
   var options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -173,12 +173,12 @@ function getCurrentLocation () {
       options
     )
   };
-};
+}; */
 
 class Main extends React.Component {  
   state = { text: [] };
 
-  lowToHigh = (text) => { // setState 브랜치의 assign 함수도 그렇고, 왜 앞에 const를 붙이면 안 되지?
+  lowToHigh = (text) => {
     const receivedText = text;
     if (receivedText) {
       this.setState(() => {
@@ -196,7 +196,7 @@ class Main extends React.Component {
   componentDidMount() {
     this.lowToHigh();
     console.log("Main > componentDidMount > tihs.state: ", this.state);
-    getCurrentLocation();
+    // getCurrentLocation();
   }
 
   render() {
@@ -227,7 +227,7 @@ class Div extends React.Component {
   }
 }
 
-ReactDOM.render( // 여러 컴포넌트를 root element에 올릴 수 있나?  ->  작동 안 하는 걸 보니, 못 올리나봐
+ReactDOM.render(
   <React.StrictMode>
     <Div />
   </React.StrictMode>,
