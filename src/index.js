@@ -90,7 +90,7 @@ class Button extends React.Component {
   handleLowToHigh = (e) => {
     e.preventDefault();
 
-    const checkinHistoryEach = handleSubmit();
+    const checkinHistoryEach = handleSubmit(); // day, when, pass, mail 값이 들어 있는 객체를 반환
     this.props.lowToHigh(checkinHistoryEach);
   }
 
@@ -178,7 +178,7 @@ class List extends React.Component {
 class Main extends React.Component {  
   state = { text: [] };
 
-  lowToHigh = (text) => {
+  lowToHigh = (text) => { // 핵심 역할: setState
     const receivedText = text;
     if (receivedText) {
       this.setState(() => {
